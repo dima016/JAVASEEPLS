@@ -1,0 +1,66 @@
+import java.util.Scanner;
+import java.util.concurrent.SynchronousQueue;
+
+public class VectorRealaise {
+   public static void main(String[] args){
+
+       Scanner in = new Scanner(System.in);
+
+       Vectors First=new Vectors();
+       Vectors Second=new Vectors();
+
+First.y=4;
+First.z=7;
+First.setX(9);
+
+Second.y=7;
+Second.z=5;
+Second.setX(11);
+
+System.out.print("Выберете пункт для просмотра информации\n 1.Скалярное произведение векторов\n2.Сума векторов\n3.Длинна вектора\n");
+  int N=in.nextInt();
+   switch (N){
+       case 1:
+           VectorСalculation.VectorScalar(First,Second);
+           break;
+       case 2:
+           VectorСalculation.VectorSum(First,Second);
+           break;
+        case 3:
+       System.out.print("Какого вектора нужно узнать длину?(1 или 2)");
+                int Choice=in.nextInt();
+                if(Choice==1) VectorСalculation.VectorLenght(First);
+                else if (Choice==2) VectorСalculation.VectorLenght(Second);
+            break;
+       default:
+           System.out.print("Вы выбрали вааринт,которого не существует");
+           System.exit(0);
+   }
+   }
+}
+class Vectors {
+    private int x;
+    int y;
+    int z;
+
+    void setX(int x) {
+        this.x = x;
+    }
+
+    int getX() {
+        return x;
+    }
+
+}
+class VectorСalculation{
+
+    static void VectorLenght(Vectors a){
+        System.out.println(((a.getX()^2)+(a.z^2)+(a.y^2)));
+    }
+   static void VectorSum(Vectors a,Vectors b){
+        System.out.print("Сумма векторов:x="+(a.getX()+b.getX())+" y="+(a.y+b.y)+" z="+(a.z+b.z));
+    }
+    static void VectorScalar(Vectors a,Vectors b){
+        System.out.print("Скалярное произведение "+((a.getX()*b.getX())+(a.y*b.y)+(a.z*b.z)));
+    }
+};
